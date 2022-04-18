@@ -1,98 +1,89 @@
 // @ts-nocheck
-import React from 'react';
-import { useTable } from 'react-table'
- 
-function Table() {
-     
-    function formatTableData() { }
-    function formatHeaders() { }
-    function formatData() { }
-   const data = React.useMemo(
-     () => [
-       {
-         col1: 'Hello',
-         col2: 'World',
-       },
-       {
-         col1: 'react-table',
-         col2: 'rocks',
-       },
-       {
-         col1: 'whatever',
-         col2: 'you want',
-       },
-     ],
-     []
-   )
- 
-   const columns = React.useMemo(
-     () => [
-       {
-         Header: 'Column 1',
-         accessor: 'col1', // accessor is the "key" in the data
-       },
-       {
-         Header: 'Column 2',
-         accessor: 'col2',
-       },
-     ],
-     []
-   )
- 
-   const {
-     getTableProps,
-     getTableBodyProps,
-     headerGroups,
-     rows,
-     prepareRow,
-   } = useTable({ columns, data })
- 
-   return (
-     <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
-       <thead>
-         {headerGroups.map(headerGroup => (
-           <tr {...headerGroup.getHeaderGroupProps()}>
-             {headerGroup.headers.map(column => (
-               <th
-                 {...column.getHeaderProps()}
-                 style={{
-                   borderBottom: 'solid 3px red',
-                   background: 'aliceblue',
-                   color: 'black',
-                   fontWeight: 'bold',
-                 }}
-               >
-                 {column.render('Header')}
-               </th>
-             ))}
-           </tr>
-         ))}
-       </thead>
-       <tbody {...getTableBodyProps()}>
-         {rows.map(row => {
-           prepareRow(row)
-           return (
-             <tr {...row.getRowProps()}>
-               {row.cells.map(cell => {
-                 return (
-                   <td
-                     {...cell.getCellProps()}
-                     style={{
-                       padding: '10px',
-                       border: 'solid 1px gray',
-                       background: 'papayawhip',
-                     }}
-                   >
-                     {cell.render('Cell')}
-                   </td>
-                 )
-               })}
-             </tr>
-           )
-         })}
-       </tbody>
-     </table>
-   )
- }
+import React from "react";
+import { Link } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import EnhancedTable from './components/EnhancedTable'
+import records from "../../data/records.js";
 
- export default Table;
+function Table() {
+  
+  // We need to keep the table from resetting the pageIndex when we
+  // Update data. So we can keep track of that flag with a ref.
+
+  // When our cell renderer calls updateMyData, we'll use
+  // the rowIndex, columnId and new value to update the
+  // original data
+  const updateMyData = (rowIndex, columnId, value) => {
+    // We also turn on the flag to not reset the page
+    setSkipPageReset(true)
+    setData(old =>
+      old.map((row, index) => {
+        if (index === rowIndex) {
+          return {
+            ...old[rowIndex],
+            [columnId]: value,
+          }
+        }
+        return row
+      })
+    )
+  }
+    
+    const [data, setData] = React.useState(React.useMemo(() => records, []))
+    const [skipPageReset, setSkipPageReset] = React.useState(false)
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Title",
+        accessor: "title", // accessor is the "key" in the data
+      },
+      {
+        Header: "Division",
+        accessor: "division",
+      },
+      {
+        Header: "Project Owner",
+        accessor: "project_owner",
+      },
+      {
+        Header: "Budget",
+        accessor: "budget",
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+      },
+      {
+        Header: "Created",
+        accessor: "created",
+      },
+      {
+        Header: "Modified",
+        accessor: "modified",
+          },
+          {
+              Header: "Details",
+              Cell: ({ cell: { value }, row: { original } }) => (
+                <Link to={`users/${original.id}`}>Open Project</Link>
+              ),
+      }
+    ],
+    []
+  );
+
+  return (
+    <>
+      <CssBaseline />
+      <EnhancedTable
+        columns={columns}
+        data={data}
+        setData={setData}
+        updateMyData={updateMyData}
+        skipPageReset={skipPageReset}
+      />
+    </>
+  );
+}
+
+export default Table;
