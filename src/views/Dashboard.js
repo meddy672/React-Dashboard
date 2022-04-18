@@ -18,10 +18,8 @@
 import React from "react";
 import TextField from "../components/TextField/TextField";
 import { Link } from "react-router-dom";
-// nodejs library that concatenates classes
-import classNames from "classnames";
-
 import Table from "../components/Table/Table.js";
+import Divider from "@material-ui/core/Divider";
 
 
 function Dashboard(props) {
@@ -29,8 +27,44 @@ function Dashboard(props) {
   return (
     <>
       <div className="content">
-        <TextField state={true} />
-        <Link to="/"> Export To PDF</Link>
+        
+        <div style={{
+          display: "flex",
+          flexWrap: 'nowrap',
+          justifyContent: 'space-between'
+        }}>
+
+          <div style={{
+            width: 300,
+            margin: 10,
+            textAlign: 'center',
+            fontSize: '5.3rem',
+            color: 'white',
+            boxShadow: "3px 5px #0a0a0f",
+            backgroundColor: "#15141f"
+          }}>1</div>
+          <div style={{
+            width: 300,
+            margin: 10,
+            textAlign: 'center',
+            fontSize: '5.3rem',
+            color: 'white',
+            boxShadow: "3px 5px #0a0a0f",
+            backgroundColor: "#15141f",
+          }}>2</div>
+          <div style={{
+            width: 300,
+            margin: 10,
+            textAlign: 'center',
+            fontSize: '5.3rem',
+            color: 'white',
+            boxShadow: "3px 5px #0a0a0f",
+            backgroundColor: "#15141f"
+          }}>3</div>
+        </div>
+
+        {/* <TextField state={true} />
+        <Link to="/"> Export To PDF</Link> */}
         <Table />
 
       </div>

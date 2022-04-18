@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from "react";
-import { Link } from "react-router-dom";
+import Link  from '@material-ui/core/Link'
 import CssBaseline from "@material-ui/core/CssBaseline";
 import EnhancedTable from './components/EnhancedTable'
 import records from "../../data/records.js";
@@ -65,7 +65,7 @@ function Table() {
           {
               Header: "Details",
               Cell: ({ cell: { value }, row: { original } }) => (
-                <Link to={`users/${original.id}`}>Open Project</Link>
+                <Link href="#">Open Project</Link>
               ),
       }
     ],
