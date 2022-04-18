@@ -31,7 +31,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }))
 
-const TableToolbar = props => {
+function TableToolbar (props) {
   const classes = useToolbarStyles()
   const {
     numSelected,
@@ -40,7 +40,7 @@ const TableToolbar = props => {
     preGlobalFilteredRows,
     setGlobalFilter,
     globalFilter,
-  } = props
+  } = props;
   return (
     <Toolbar
       className={clsx(classes.root, {
