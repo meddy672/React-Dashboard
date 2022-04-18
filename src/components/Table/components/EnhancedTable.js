@@ -19,7 +19,8 @@ import {
   useRowSelect,
   useSortBy,
   useTable,
-} from 'react-table'
+} from 'react-table';
+
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -32,7 +33,9 @@ const IndeterminateCheckbox = React.forwardRef(
 
     return (
       <>
-        <Checkbox ref={resolvedRef} {...rest} />
+        <Checkbox color="white" ref={resolvedRef} {...rest} style={{
+          color: 'white',
+        }} />
       </>
     )
   }
@@ -43,6 +46,7 @@ const inputStyle = {
   margin: 0,
   border: 0,
   background: 'transparent',
+  color: 'white'
 }
 
 // Create an editable cell renderer
@@ -201,9 +205,15 @@ const EnhancedTable = ({
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
                 <TableCell
-                  {...(column.id === 'selection'
-                    ? column.getHeaderProps()
-                    : column.getHeaderProps(column.getSortByToggleProps()))}
+                  {...column.getHeaderProps([
+                      {
+                      style: {
+                          color: 'white',
+                        fontWeight: 'bold'
+                      }
+                      }
+                    ])
+                    }
                 >
                   {column.render('Header')}
                   {column.id !== 'selection' ? (
@@ -222,10 +232,14 @@ const EnhancedTable = ({
           {page.map((row, i) => {
             prepareRow(row)
             return (
-              <TableRow {...row.getRowProps()}>
+              <TableRow {...row.getRowProps()} >
                 {row.cells.map(cell => {
                   return (
-                    <TableCell {...cell.getCellProps()}>
+                    <TableCell {...cell.getCellProps([
+                      {
+                        styles: {color: 'white'}
+                      }
+                    ])}>
                       {cell.render('Cell')}
                     </TableCell>
                   )
@@ -235,9 +249,10 @@ const EnhancedTable = ({
           })}
         </TableBody>
 
-        <TableFooter>
+        <TableFooter >
           <TableRow>
             <TablePagination
+              
               rowsPerPageOptions={[
                 5,
                 10,
@@ -245,6 +260,7 @@ const EnhancedTable = ({
                 { label: 'All', value: data.length },
               ]}
               colSpan={3}
+              style={{color: 'white'}}
               count={data.length}
               rowsPerPage={pageSize}
               page={pageIndex}

@@ -16,6 +16,8 @@
 
 */
 import React from "react";
+import TextField from "../components/TextField/TextField";
+import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
@@ -27,6 +29,8 @@ function Dashboard(props) {
   return (
     <>
       <div className="content">
+        <TextField state={true} />
+        <Link to="/"> Export To PDF</Link>
         <Table />
 
       </div>
