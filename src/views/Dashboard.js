@@ -19,7 +19,6 @@ import React from "react";
 import TextField from "../components/TextField/TextField";
 import { Link } from "react-router-dom";
 import Table from "../components/Table/Table.js";
-import Divider from "@material-ui/core/Divider";
 
 
 function Dashboard(props) {

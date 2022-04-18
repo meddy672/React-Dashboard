@@ -57,7 +57,7 @@ function GlobalFilter ({ preGlobalFilteredRows, globalFilter, setGlobalFilter,})
         onChange={e => {
           setGlobalFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
         }}
-        placeholder={`${count} Records...`}
+        placeholder={`${count} Projects...`}
         classes={{
           root: classes.inputRoot,
           input: classes.inputInput,
