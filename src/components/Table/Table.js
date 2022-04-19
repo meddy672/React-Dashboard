@@ -2,27 +2,40 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import EnhancedTable from "./components/EnhancedTable";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-function Table({columns, records}) {
+function Table({ columns, records }) {
+  
+  const [data, setData] = React.useState(React.useMemo(() => records, []));
+  const [skipPageReset, setSkipPageReset] = React.useState(false);
 
   const updateMyData = (rowIndex, columnId, value) => {
     setSkipPageReset(true);
     setData((old) =>
       old.map((row, index) => {
         if (index === rowIndex) {
-          return {
-            ...old[rowIndex],
-            [columnId]: value,
-          };
+          if (row[columnId] !== value) {
+            toast.info('Project Updated!', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            return {
+              ...old[rowIndex],
+              [columnId]: value,
+            };
+          }
         }
         return row;
       })
     );
   };
-
-  const [data, setData] = React.useState(React.useMemo(() => records, []));
-  const [skipPageReset, setSkipPageReset] = React.useState(false);
 
   return (
     <>
@@ -33,6 +46,18 @@ function Table({columns, records}) {
         setData={setData}
         updateMyData={updateMyData}
         skipPageReset={skipPageReset}
+      />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
       />
     </>
   );

@@ -5,7 +5,7 @@ import Table from "../components/Table/Table.js";
 import InfoBoxes from "../components/InfoBoxes/InfoBoxes";
 import records from "../data/records.js";
 
-function Dashboard(props) {
+function Dashboard() {
   const columns = React.useMemo(
     () => [
       {
