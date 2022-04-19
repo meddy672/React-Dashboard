@@ -129,6 +129,7 @@ function EnhancedTable({
       defaultColumn,
       autoResetPage: !skipPageReset,
       updateMyData,
+      initialState: {pageSize: 3}
     },
     useGlobalFilter,
     useSortBy,
@@ -237,6 +238,7 @@ function EnhancedTable({
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[
+                3,
                 5,
                 10,
                 25,

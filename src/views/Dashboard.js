@@ -17,6 +17,7 @@
 */
 import React from "react";
 import TextField from "../components/TextField/TextField";
+import Typography from '@material-ui/core/Typography'
 import Link from "@material-ui/core/Link";
 import Table from "../components/Table/Table.js";
 import InfoBoxes from "../components/InfoBoxes/InfoBoxes";
@@ -28,35 +29,35 @@ function Dashboard(props) {
   const columns = React.useMemo(
     () => [
       {
-        Header: () => <span style={{ color: "white" }}>Name</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Name</span>,
         accessor: "title", // accessor is the "key" in the data
       },
       {
-        Header: () => <span style={{ color: "white" }}>Division</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Division</span>,
         accessor: "division",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Project Owner</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Project Owner</span>,
         accessor: "project_owner",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Budget</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Budget</span>,
         accessor: "budget",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Status</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Status</span>,
         accessor: "status",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Created</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Created</span>,
         accessor: "created",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Modified</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Modified</span>,
         accessor: "modified",
       },
       {
-        Header: () => <span style={{ color: "white" }}>Details</span>,
+        Header: () => <span style={{ color: "white", fontSize: 17, fontWeight: "bolder" }}>Details</span>,
         accessor: "name",
         Cell: () => <Link href="#">Open Project</Link>,
       },
@@ -72,6 +73,10 @@ function Dashboard(props) {
   return (
     <>
       <div className="content">
+      <Typography variant="h3" id="tableTitle">
+          Overview
+        </Typography>
+        <hr style={{ borderBottom: 'solid 1px lightgray', borderBottomWidth: 'thin' }} />
         <InfoBoxes
           completed={completed.length}
           inProgress={inProgress.length}
