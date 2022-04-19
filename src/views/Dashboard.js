@@ -16,7 +16,6 @@
 
 */
 import React from "react";
-import TextField from "../components/TextField/TextField";
 import Typography from '@material-ui/core/Typography'
 import Link from "@material-ui/core/Link";
 import Table from "../components/Table/Table.js";
@@ -69,6 +68,18 @@ function Dashboard(props) {
   const inProgress = records.filter((record) => record.status === "working");
   const archived = records.filter((record) => record.status === "archived");
   const newProject = records.filter((record) => record.status === "new");
+  const tableRecords = records.map(record => {
+    return {
+      title: record.title,
+      division: record.division,
+      project_owner: record.project_owner,
+      budget: new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(record.budget),
+      status: record.status,
+      created: record.created,
+      modified: record.modified,
+      name: record.name,
+    }
+  });
 
   return (
     <>
@@ -83,9 +94,7 @@ function Dashboard(props) {
           archived={archived.length}
           newProject={newProject.length}
         />
-        {/* <TextField state={true} />
-        <Link to="/"> Export To PDF</Link> */}
-        <Table columns={columns} records={records}/>
+        <Table columns={columns} records={tableRecords}/>
 
       </div>
     </>
