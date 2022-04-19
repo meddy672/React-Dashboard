@@ -60,6 +60,15 @@ function Dashboard(props) {
             boxShadow: "3px 5px #0a0a0f",
             backgroundColor: "#15141f"
           }}>3</div>
+                    <div style={{
+            width: 300,
+            margin: 10,
+            textAlign: 'center',
+            fontSize: '5.3rem',
+            color: 'white',
+            boxShadow: "3px 5px #0a0a0f",
+            backgroundColor: "#15141f"
+          }}>4</div>
         </div>
 
         {/* <TextField state={true} />

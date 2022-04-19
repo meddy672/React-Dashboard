@@ -4630,7 +4630,7 @@ a.close.disabled {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  padding: 24px 24px 16px 24px-0.25rem;
+  padding: 24px 24px 16px 24px 25rem;
   border-top: 1px solid #e9ecef;
   border-bottom-right-radius: calc(0.2857rem - 1px);
   border-bottom-left-radius: calc(0.2857rem - 1px); }
