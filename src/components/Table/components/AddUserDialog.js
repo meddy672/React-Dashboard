@@ -71,40 +71,48 @@ const AddUserDialog = props => {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Add User</DialogTitle>
+        <DialogTitle id="form-dialog-title">Add Project</DialogTitle>
         <DialogContent>
-          <DialogContentText>Demo add item to react table.</DialogContentText>
+          <DialogContentText>All Fields Disabled.</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
-            label="First Name"
+            label="Name"
             type="text"
             fullWidth
-            value={user.firstName}
+            disabled
+            placeholder="Project Name"
+            value={""}
             onChange={handleChange('firstName')}
           />
           <TextField
             margin="dense"
-            label="Last Name"
+            label="Title"
             type="text"
             fullWidth
-            value={user.lastName}
+            disabled
+            value={""}
+            placeholder="Project Owner"
             onChange={handleChange('lastName')}
           />
           <TextField
             margin="dense"
-            label="Age"
-            type="number"
+            label="Division"
+            type="text"
             fullWidth
-            value={user.age}
+            disabled
+            placeholder="Division"
+            value={""}
             onChange={handleChange('age')}
           />
           <TextField
             margin="dense"
-            label="Visits"
-            type="number"
+            label="Budget"
+            type="text"
             fullWidth
-            value={user.visits}
+            disabled
+            placeholder="$0.00"
+            value={""}
             onChange={handleChange('visits')}
           />
           <TextField
@@ -112,31 +120,17 @@ const AddUserDialog = props => {
             label="Status"
             type="text"
             fullWidth
-            value={user.status}
+            disabled
+            placeholder="Status"
+            value={""}
             onChange={handleChange('status')}
-          />
-          <TextField
-            margin="dense"
-            label="Profile Progress"
-            type="number"
-            fullWidth
-            value={user.progress}
-            onChange={handleChange('progress')}
           />
         </DialogContent>
         <DialogActions>
-          <Tooltip title="Add multiple">
-            <Switch
-              checked={switchState.addMultiple}
-              onChange={handleSwitchChange('addMultiple')}
-              value="addMultiple"
-              inputProps={{ 'aria-label': 'secondary checkbox' }}
-            />
-          </Tooltip>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleAdd} color="primary">
+          <Button disabled onClick={handleAdd} color="primary">
             Add
           </Button>
         </DialogActions>
