@@ -17,63 +17,70 @@
 */
 import React from "react";
 import TextField from "../components/TextField/TextField";
-import { Link } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 import Table from "../components/Table/Table.js";
+import InfoBoxes from "../components/InfoBoxes/InfoBoxes";
+import records from "../data/records.js";
 
 
 function Dashboard(props) {
 
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: () => <span style={{ color: "white" }}>Name</span>,
+        accessor: "title", // accessor is the "key" in the data
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Division</span>,
+        accessor: "division",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Project Owner</span>,
+        accessor: "project_owner",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Budget</span>,
+        accessor: "budget",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Status</span>,
+        accessor: "status",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Created</span>,
+        accessor: "created",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Modified</span>,
+        accessor: "modified",
+      },
+      {
+        Header: () => <span style={{ color: "white" }}>Details</span>,
+        accessor: "name",
+        Cell: () => <Link href="#">Open Project</Link>,
+      },
+    ],
+    []
+  );
+
+  const completed = records.filter((record) => record.status === "delivered");
+  const inProgress = records.filter((record) => record.status === "working");
+  const archived = records.filter((record) => record.status === "archived");
+  const newProject = records.filter((record) => record.status === "new");
+
   return (
     <>
       <div className="content">
-        
-        <div style={{
-          display: "flex",
-          flexWrap: 'nowrap',
-          justifyContent: 'space-between'
-        }}>
-
-          <div style={{
-            width: 300,
-            margin: 10,
-            textAlign: 'center',
-            fontSize: '5.3rem',
-            color: 'white',
-            boxShadow: "3px 5px #0a0a0f",
-            backgroundColor: "#15141f"
-          }}>1</div>
-          <div style={{
-            width: 300,
-            margin: 10,
-            textAlign: 'center',
-            fontSize: '5.3rem',
-            color: 'white',
-            boxShadow: "3px 5px #0a0a0f",
-            backgroundColor: "#15141f",
-          }}>2</div>
-          <div style={{
-            width: 300,
-            margin: 10,
-            textAlign: 'center',
-            fontSize: '5.3rem',
-            color: 'white',
-            boxShadow: "3px 5px #0a0a0f",
-            backgroundColor: "#15141f"
-          }}>3</div>
-                    <div style={{
-            width: 300,
-            margin: 10,
-            textAlign: 'center',
-            fontSize: '5.3rem',
-            color: 'white',
-            boxShadow: "3px 5px #0a0a0f",
-            backgroundColor: "#15141f"
-          }}>4</div>
-        </div>
-
+        <InfoBoxes
+          completed={completed.length}
+          inProgress={inProgress.length}
+          archived={archived.length}
+          newProject={newProject.length}
+        />
         {/* <TextField state={true} />
         <Link to="/"> Export To PDF</Link> */}
-        <Table />
+        <Table columns={columns} records={records}/>
 
       </div>
     </>
