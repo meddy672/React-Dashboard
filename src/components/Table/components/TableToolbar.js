@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useState } from "react";
+import AddUserDialog from "./AddUserDialog";
+import clsx from "clsx";
+import DeleteIcon from "@material-ui/icons/Delete";
+import GlobalFilter from "./GlobalFilter";
+import IconButton from "@material-ui/core/IconButton";
+import { lighten, makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Tooltip from "@material-ui/core/Tooltip";
+import DatePicker from "react-datepicker";
 
-import AddUserDialog from './AddUserDialog'
-import clsx from 'clsx'
-import DeleteIcon from '@material-ui/icons/Delete'
-import GlobalFilter from './GlobalFilter'
-import IconButton from '@material-ui/core/IconButton'
-import { lighten, makeStyles } from '@material-ui/core/styles'
-import PropTypes from 'prop-types'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip'
+import "react-datepicker/dist/react-datepicker.css";
 
-const useToolbarStyles = makeStyles(theme => ({
+import "./Component.css";
+
+const useToolbarStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(1),
   },
   highlight:
-    theme.palette.type === 'light'
+    theme.palette.type === "light"
       ? {
           color: theme.palette.secondary.main,
           backgroundColor: lighten(theme.palette.secondary.light, 0.85),
@@ -27,12 +31,14 @@ const useToolbarStyles = makeStyles(theme => ({
           backgroundColor: theme.palette.secondary.dark,
         },
   title: {
-    flex: '1 1 100%',
+    flex: "1 1 100%",
   },
-}))
+}));
 
-function TableToolbar (props) {
-  const classes = useToolbarStyles()
+function TableToolbar(props) {
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+  const classes = useToolbarStyles();
   const {
     numSelected,
     addUserHandler,
@@ -41,7 +47,7 @@ function TableToolbar (props) {
     setGlobalFilter,
     globalFilter,
   } = props;
-  
+
   return (
     <Toolbar
       className={clsx(classes.root, {
@@ -58,9 +64,20 @@ function TableToolbar (props) {
           {numSelected} selected
         </Typography>
       ) : (
-        <Typography className={classes.title} variant="h6" id="tableTitle">
-          All Projects
-        </Typography>
+        <>
+          <Typography className={classes.title} variant="subtitle1">
+            <DatePicker
+              selectsRange={true}
+              startDate={startDate}
+              endDate={endDate}
+                onChange={(update) => {
+                console.log(update);
+                setDateRange(update);
+              }}
+              isClearable={true}
+            />
+          </Typography>
+        </>
       )}
 
       {numSelected > 0 ? (
@@ -71,13 +88,14 @@ function TableToolbar (props) {
         </Tooltip>
       ) : (
         <GlobalFilter
+          sx={{ margin: 100 }}
           preGlobalFilteredRows={preGlobalFilteredRows}
           globalFilter={globalFilter}
           setGlobalFilter={setGlobalFilter}
         />
       )}
     </Toolbar>
-  )
+  );
 }
 
 TableToolbar.propTypes = {
@@ -87,6 +105,6 @@ TableToolbar.propTypes = {
   setGlobalFilter: PropTypes.func.isRequired,
   preGlobalFilteredRows: PropTypes.array.isRequired,
   globalFilter: PropTypes.string.isRequired,
-}
+};
 
-export default TableToolbar
+export default TableToolbar;

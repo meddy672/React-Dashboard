@@ -1,0 +1,14 @@
+
+.react-datepicker__input-container > input{
+    background-color: #56565f;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 220px;
+    padding: 5px;
+    margin-left: 10px;
+    outline: none;
+}
+.react-datepicker__input-container input:empty:before{
+    content: "Select A Date";    
+}

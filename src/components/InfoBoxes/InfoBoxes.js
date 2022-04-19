@@ -23,7 +23,7 @@ function InfoBoxes(props) {
       >
         {props.completed} <small style={{
           fontSize: 10,
-          marginLeft: -15
+          marginLeft: -18
         }}>(Projects)</small>
         <div
           style={{
@@ -52,7 +52,7 @@ function InfoBoxes(props) {
       >
         {props.inProgress} <small style={{
           fontSize: 10,
-          marginLeft: -15
+          marginLeft: -18
         }}>(Projects)</small>
         <div
           style={{
@@ -81,7 +81,7 @@ function InfoBoxes(props) {
       >
         {props.archived} <small style={{
           fontSize: 10,
-          marginLeft: -15
+          marginLeft: -18
         }}>(Projects)</small>
         <div
           style={{
@@ -110,7 +110,7 @@ function InfoBoxes(props) {
       >
         {props.newProject} <small style={{
           fontSize: 10,
-          marginLeft: -15
+          marginLeft: -18
         }}>(Projects)</small>
         <div
           style={{
