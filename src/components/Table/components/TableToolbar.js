@@ -41,6 +41,7 @@ function TableToolbar (props) {
     setGlobalFilter,
     globalFilter,
   } = props;
+  
   return (
     <Toolbar
       className={clsx(classes.root, {

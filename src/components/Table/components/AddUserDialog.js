@@ -9,7 +9,6 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import IconButton from '@material-ui/core/IconButton'
 import PropTypes from 'prop-types'
-import Switch from '@material-ui/core/Switch'
 import TextField from '@material-ui/core/TextField'
 import Tooltip from '@material-ui/core/Tooltip'
 
@@ -31,10 +30,6 @@ const AddUserDialog = props => {
   const [switchState, setSwitchState] = React.useState({
     addMultiple: false,
   })
-
-  const handleSwitchChange = name => event => {
-    setSwitchState({ ...switchState, [name]: event.target.checked })
-  }
 
   const resetSwitch = () => {
     setSwitchState({ addMultiple: false })

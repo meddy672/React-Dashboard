@@ -80,7 +80,7 @@ function EditableCell({
   return (
     <input
       style={inputStyle}
-      value={value}
+      value={value || ''}
       onChange={onChange}
       onBlur={onBlur}
     />
@@ -89,13 +89,13 @@ function EditableCell({
 
 EditableCell.propTypes = {
   cell: PropTypes.shape({
-    value: PropTypes.any.isRequired,
+    value: PropTypes.any,
   }),
   row: PropTypes.shape({
     index: PropTypes.number.isRequired,
   }),
   column: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
   }),
   updateMyData: PropTypes.func.isRequired,
 };
@@ -188,7 +188,7 @@ function EnhancedTable({
         addUserHandler={addUserHandler}
         preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
-        globalFilter={globalFilter}
+        globalFilter={globalFilter || ''}
       />
       <MaUTable {...getTableProps()}>
       <TableHead>

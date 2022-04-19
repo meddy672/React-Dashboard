@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Table({ columns, records }) {
   
-  const [data, setData] = React.useState(React.useMemo(() => records, []));
+  const [data, setData] = React.useState(React.useMemo(() => records, [records]));
   const [skipPageReset, setSkipPageReset] = React.useState(false);
 
   const updateMyData = (rowIndex, columnId, value) => {
