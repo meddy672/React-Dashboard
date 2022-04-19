@@ -5,10 +5,14 @@
     color: white;
     border: none;
     width: 220px;
-    padding: 5px;
+    padding: 4px;
     margin-left: 10px;
     outline: none;
 }
 .react-datepicker__input-container input:empty:before{
     content: "Select A Date";    
+}
+.react-datepicker__close-icon{
+    position: relative;
+    left: 10px;
 }
