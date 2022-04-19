@@ -67,7 +67,8 @@ function TableToolbar(props) {
         <>
           <Typography className={classes.title} variant="subtitle1">
             <DatePicker
-              selectsRange={true}
+                selectsRange={true}
+                placeholderText="Click to select a date"
               startDate={startDate}
               endDate={endDate}
                 onChange={(update) => {
