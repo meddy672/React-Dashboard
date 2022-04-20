@@ -12,20 +12,14 @@ function Table({ columns, records, setData }) {
   const [skipPageReset, setSkipPageReset] = React.useState(false);
 
   const updateMyData = (rowIndex, columnId, value) => {    
+    console.log(value)
     setSkipPageReset(true);
     setData((old) =>
       old.map((row, index) => {
         if (index === rowIndex) {
+          console.log(row[columnId])
           if (row[columnId] !== value) {
-            toast.info('Project Updated!', {
-              position: "top-right",
-              autoClose: 3000,
-              hideProgressBar: true,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.info('Project Updated!');
             return {
               ...old[rowIndex],
               [columnId]: value,
@@ -50,13 +44,9 @@ function Table({ columns, records, setData }) {
       <ToastContainer
         position="top-right"
         autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
+        hideProgressBar={true}
+        closeOnClick={true}
+        pauseOnHover={true}
         theme="dark"
       />
     </>

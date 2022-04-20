@@ -1,6 +1,4 @@
 import React from "react";
-
-import Checkbox from "@material-ui/core/Checkbox";
 import MaUTable from "@material-ui/core/Table";
 import PropTypes from "prop-types";
 import TableBody from "@material-ui/core/TableBody";
@@ -22,29 +20,6 @@ import {
   useTable,
 } from "react-table";
 import './Component.css';
-
-const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
-    const defaultRef = React.useRef();
-    const resolvedRef = ref || defaultRef;
-
-    React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate;
-    }, [resolvedRef, indeterminate]);
-
-    return (
-      <>
-        <Checkbox
-          ref={resolvedRef}
-          {...rest}
-          style={{
-            color: "white",
-          }}
-        />
-      </>
-    );
-  }
-);
 
 const inputStyle = {
   padding: 0,

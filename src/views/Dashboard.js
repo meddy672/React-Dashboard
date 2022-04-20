@@ -95,7 +95,7 @@ function Dashboard() {
     };
   });
 
-  const [data, setData] = React.useState(React.useMemo(() => records, []));
+  const [data, setData] = React.useState(React.useMemo(() => tableRecords, [tableRecords]));
 
   return (
       <div className="content">
