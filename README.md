@@ -18,7 +18,11 @@ Project Dasboard is a client-side application built with [React](https://reactjs
 Node.js (Required)
 
 To set up the project locally, simply clone repository and run the following commands:
+```bash
+git clone https://github.com/meddy672/Project-Dashboard.git
 ```
+Next
+```bash
 npm start && npm start
 ```
 
