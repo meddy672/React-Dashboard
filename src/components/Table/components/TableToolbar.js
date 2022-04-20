@@ -10,6 +10,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import DatePicker from "react-datepicker";
+import { DateTime } from "luxon";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -67,13 +68,18 @@ function TableToolbar(props) {
         <>
           <Typography className={classes.title} variant="subtitle1">
             <DatePicker
-                selectsRange={true}
-                placeholderText="Click to select a date"
-              startDate={startDate}
+              selectsRange={true}
+                placeholderText="Filter By Date"
+                startDate={startDate}
               endDate={endDate}
-                onChange={(update) => {
-                console.log(update);
-                setDateRange(update);
+                onChange={(range) => {
+                console.log(range)
+                if (range[0] && range[1]) {
+                  const d1 = DateTime.fromJSDate(range[0]);
+                  const d2 = DateTime.fromJSDate(range[1]);
+                  console.log(d1 < d2);
+                }
+                setDateRange(range);
               }}
               isClearable={true}
             />
