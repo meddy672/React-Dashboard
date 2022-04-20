@@ -14,3 +14,7 @@
     position: relative;
     left: 10px;
 }
+
+.MuiSvgIcon-root, .MuiTableSortLabel-icon, .MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon{
+    color: white !important;
+}

@@ -21,6 +21,7 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
+import './Component.css';
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -184,6 +185,10 @@ function EnhancedTable({
     <TableContainer>
       <TableToolbar
         numSelected={Object.keys(selectedRowIds).length}
+        columns={columns}
+        data={data}
+        setData={setData}
+        skipPageReset={skipPageReset}
         deleteUserHandler={deleteUserHandler}
         addUserHandler={addUserHandler}
         preGlobalFilteredRows={preGlobalFilteredRows}
@@ -195,10 +200,17 @@ function EnhancedTable({
           {headerGroups.map(headerGroup => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
-                <TableCell sx={{color: 'white'}}
+                <TableCell
                   {...(column.id === 'selection'
                     ? column.getHeaderProps()
-                    : column.getHeaderProps(column.getSortByToggleProps([])))}
+                    : column.getHeaderProps(column.getSortByToggleProps([
+                      {
+                        className: 'theme-color-white',
+                        root: {
+                          color: 'white',
+                        }
+                      }
+                    ])))}
                 >
                   {column.render('Header')}
                   {column.id !== 'selection' ? (

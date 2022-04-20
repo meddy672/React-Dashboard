@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import DatePicker from "react-datepicker";
 import { DateTime } from "luxon";
+import records from "../../../data/records.js";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -73,11 +74,18 @@ function TableToolbar(props) {
                 startDate={startDate}
               endDate={endDate}
                 onChange={(range) => {
-                console.log(range)
                 if (range[0] && range[1]) {
                   const d1 = DateTime.fromJSDate(range[0]);
                   const d2 = DateTime.fromJSDate(range[1]);
-                  console.log(d1 < d2);
+                  const newData = records.filter((data) => {
+                    const jsDate = new Date(data.created);
+                    const formattedDate = DateTime.fromJSDate(jsDate);
+                    return d1 < formattedDate && d2 > formattedDate;
+                  });
+                  console.log(newData);
+                  if (newData.length) {
+                    props.setData(newData);
+                  }
                 }
                 setDateRange(range);
               }}
