@@ -5,6 +5,8 @@ import Table from "../components/Table/Table.js";
 import InfoBoxes from "../components/InfoBoxes/InfoBoxes";
 import records from "../data/records.js";
 
+
+
 function Dashboard() {
   const columns = React.useMemo(
     () => [
@@ -76,11 +78,7 @@ function Dashboard() {
     ],
     []
   );
-
-  const completed = records.filter((record) => record.status === "delivered");
-  const inProgress = records.filter((record) => record.status === "working");
-  const archived = records.filter((record) => record.status === "archived");
-  const newProject = records.filter((record) => record.status === "new");
+  
   const tableRecords = records.map((record) => {
     return {
       title: record.title,
@@ -97,27 +95,15 @@ function Dashboard() {
     };
   });
 
+  const [data, setData] = React.useState(React.useMemo(() => records, []));
+
   return (
-    <>
       <div className="content">
-        <Typography variant="h3" id="tableTitle">
-          Overview
-        </Typography>
-        <hr
-          style={{
-            borderBottom: "solid 1px lightgray",
-            borderBottomWidth: "thin",
-          }}
-        />
-        <InfoBoxes
-          completed={completed.length}
-          inProgress={inProgress.length}
-          archived={archived.length}
-          newProject={newProject.length}
-        />
-        <Table columns={columns} records={tableRecords} />
+        <Typography variant="h3" id="tableTitle">Overview</Typography>
+        <hr style={{ borderBottom: "solid 1px lightgray", borderBottomWidth: "thin",}}/>
+        <InfoBoxes records={data} />
+        <Table columns={columns} records={tableRecords} setData={setData} />
       </div>
-    </>
   );
 }
 

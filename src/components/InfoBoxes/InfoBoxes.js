@@ -1,6 +1,11 @@
 import React from "react";
+import './InfoBoxes.css';
 
-function InfoBoxes(props) {
+function InfoBoxes({ records }) {
+  const completed = records.filter((record) => record.status.toLowerCase() === "delivered");
+  const inProgress = records.filter((record) => record.status.toLowerCase() === "working");
+  const archived = records.filter((record) => record.status.toLowerCase() === "archived");
+  const newProject = records.filter((record) => record.status.toLowerCase() === "new");
   return (
     <div
       style={{
@@ -21,7 +26,7 @@ function InfoBoxes(props) {
           backgroundColor: "#15141f",
         }}
       >
-        {props.completed} <small style={{
+        {completed.length} <small style={{
           fontSize: 10,
           marginLeft: -18
         }}>(Projects)</small>
@@ -36,7 +41,7 @@ function InfoBoxes(props) {
             padding: 17,
           }}
         >
-          Completed
+          Delivered
         </div>
       </div>
       <div
@@ -50,7 +55,7 @@ function InfoBoxes(props) {
           backgroundColor: "#15141f",
         }}
       >
-        {props.inProgress} <small style={{
+        {inProgress.length} <small style={{
           fontSize: 10,
           marginLeft: -18
         }}>(Projects)</small>
@@ -65,7 +70,7 @@ function InfoBoxes(props) {
             padding: 17,
           }}
         >
-          In Progress
+          Working
         </div>
       </div>
       <div
@@ -79,7 +84,7 @@ function InfoBoxes(props) {
           backgroundColor: "#15141f",
         }}
       >
-        {props.archived} <small style={{
+        {archived.length} <small style={{
           fontSize: 10,
           marginLeft: -18
         }}>(Projects)</small>
@@ -108,7 +113,7 @@ function InfoBoxes(props) {
           backgroundColor: "#15141f",
         }}
       >
-        {props.newProject} <small style={{
+        {newProject.length} <small style={{
           fontSize: 10,
           marginLeft: -18
         }}>(Projects)</small>

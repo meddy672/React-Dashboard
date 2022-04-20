@@ -1,4 +1,4 @@
-# [Project Dashboard](https://github.com/meddy672/Project-Dashboard)
+# Project Dashboard
 
 
 ![Product Gif](./github-assets/overview.gif)
@@ -8,10 +8,9 @@ Project Dasboard is a client-side application built with [React](https://reactjs
 
 ## Features
 - Search Filter
-- Range Filter
+- Range Filter (On Created Date)
 - Column Sorting
 - Edit Project
-- Delete Project
 - Add Project (Disabled Feature)
 
 ## Local Setup
@@ -21,7 +20,7 @@ To set up the project locally, simply clone repository and run the following com
 ```bash
 git clone https://github.com/meddy672/Project-Dashboard.git
 ```
-Next
+Next, `cd` in the project and run the following commands:
 ```bash
 npm start && npm start
 ```

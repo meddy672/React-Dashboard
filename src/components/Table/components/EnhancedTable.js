@@ -136,24 +136,7 @@ function EnhancedTable({
     useSortBy,
     usePagination,
     useRowSelect,
-    (hooks) => {
-      hooks.allColumns.push((columns) => [
-        {
-          id: "selection",
-          Header: ({ getToggleAllRowsSelectedProps }) => (
-            <div>
-              <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
-            </div>
-          ),
-          Cell: ({ row }) => (
-            <div>
-              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-            </div>
-          ),
-        },
-        ...columns,
-      ]);
-    }
+
   );
 
   const handleChangePage = (event, newPage) => {

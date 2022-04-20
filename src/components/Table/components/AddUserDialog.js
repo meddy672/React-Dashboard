@@ -57,7 +57,7 @@ const AddUserDialog = props => {
   return (
     <div>
       <Tooltip title="Add Project" arrow={true}>
-        <IconButton style={{color: 'white'}} aria-label="add" onClick={handleClickOpen}>
+        <IconButton style={{color: 'white', outline: 'none'}} aria-label="add" onClick={handleClickOpen}>
           <AddIcon />
         </IconButton>
       </Tooltip>

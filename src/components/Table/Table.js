@@ -6,12 +6,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-function Table({ columns, records }) {
+function Table({ columns, records, setData }) {
   
-  const [data, setData] = React.useState(React.useMemo(() => records, [records]));
+  const [tableData, setTableData] = React.useState(React.useMemo(() => records, [records]));
   const [skipPageReset, setSkipPageReset] = React.useState(false);
 
-  const updateMyData = (rowIndex, columnId, value) => {
+  const updateMyData = (rowIndex, columnId, value) => {    
     setSkipPageReset(true);
     setData((old) =>
       old.map((row, index) => {
@@ -42,8 +42,8 @@ function Table({ columns, records }) {
       <CssBaseline />
       <EnhancedTable
         columns={columns}
-        data={data}
-        setData={setData}
+        data={tableData}
+        setData={setTableData}
         updateMyData={updateMyData}
         skipPageReset={skipPageReset}
       />
