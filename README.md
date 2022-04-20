@@ -4,13 +4,23 @@
 ![Product Gif](./github-assets/overview.gif)
 
 ## Overview
-Project Dasboard is a client-side application built with [React](https://reactjs.org/) that allows for a user to manage project related data. The dashboard uses the **Black Dashboard Theme** designed by [Creative Tim](https://www.creative-tim.com/) and is equipped with sorting, filtering, and editing capabilities for management purposes.
+Project Dasboard is a client-side application built with [React](https://reactjs.org/) The application allows for a user to manage project related data. The dashboard uses the **Black Dashboard Theme** designed by [Creative Tim](https://www.creative-tim.com/) and is equipped with filtering, sorting, and editing capabilities for management purposes. [See Demo]()
 
 ## Features
-- Global Search Filter
+- Search Filter
+- Range Filter
 - Column Sorting
-- Date Range Filter
 - Edit Project
+- Delete Project
 - Add Project (Disabled Feature)
 
 ## Local Setup
+
+### Required Software
+- Node.js
+
+To set up the project locally, simply clone repository and run the following commands:
+- `npm install`
+- `npm start`
+
+The application will be available at: [http://localhost:3000/admin/dashboard](http://localhost:3000/admin/dashboard)
