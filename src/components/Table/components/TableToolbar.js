@@ -12,9 +12,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import DatePicker from "react-datepicker";
 import { DateTime } from "luxon";
 import records from "../../../data/records.js";
-
 import "react-datepicker/dist/react-datepicker.css";
-
 import "./Component.css";
 
 const useToolbarStyles = makeStyles((theme) => ({
@@ -70,26 +68,60 @@ function TableToolbar(props) {
           <Typography className={classes.title} variant="subtitle1">
             <DatePicker
               selectsRange={true}
-                placeholderText="Filter By Date"
+                placeholderText="Created Date Range..."
                 startDate={startDate}
-              endDate={endDate}
+                endDate={endDate}
+                onChangeRaw={(event) => {
+                  if (event.target.value === "") {
+                    const mapped = records.map((record) => {
+                      return {
+                        title: record.title,
+                        division: record.division,
+                        project_owner: record.project_owner,
+                        budget: new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        }).format(record.budget),
+                        status: record.status.charAt(0).toUpperCase() + record.status.slice(1),
+                        created: record.created,
+                        modified: record.modified,
+                        name: record.name,
+                      };
+                    });
+                    props.setData(mapped);
+                  }
+                }}
                 onChange={(range) => {
                 if (range[0] && range[1]) {
                   const d1 = DateTime.fromJSDate(range[0]);
                   const d2 = DateTime.fromJSDate(range[1]);
-                  const newData = records.filter((data) => {
-                    const jsDate = new Date(data.created);
+                  const recordsFound = records.filter((record) => {
+                    const jsDate = new Date(record.created);
                     const formattedDate = DateTime.fromJSDate(jsDate);
                     return d1 < formattedDate && d2 > formattedDate;
                   });
-                  console.log(newData);
-                  if (newData.length) {
-                    props.setData(newData);
+                  if (recordsFound.length) {
+                    const mapped = recordsFound.map((record) => {
+                      return {
+                        title: record.title,
+                        division: record.division,
+                        project_owner: record.project_owner,
+                        budget: new Intl.NumberFormat("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        }).format(record.budget),
+                        status: record.status.charAt(0).toUpperCase() + record.status.slice(1),
+                        created: record.created,
+                        modified: record.modified,
+                        name: record.name,
+                      };
+                    });
+                    props.setData(mapped);
                   }
                 }
                 setDateRange(range);
               }}
-              isClearable={true}
+              isClearable={false}
             />
           </Typography>
         </>
