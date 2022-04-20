@@ -2,3 +2,14 @@
 
 
 ![Product Gif](./github-assets/overview.gif)
+
+## Features
+- Global Search Filter
+- Column Sorting
+- Date Range Filtering
+- Add Project (Disabled Feature)
+- Update Project
+
+## How To Use
+
+## Local Setup
