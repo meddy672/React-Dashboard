@@ -15,7 +15,7 @@ Project Dasboard is a client-side application built with [React](https://reactjs
 - Add Project (Disabled Feature)
 
 ## Local Setup
-- Node.js (Required)
+Node.js (Required)
 
 To set up the project locally, simply clone repository and run the following commands:
 ```
