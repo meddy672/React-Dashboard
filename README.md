@@ -4,7 +4,7 @@
 ![Product Gif](./github-assets/overview.gif)
 
 ## Overview
-Project Dasboard is a client-side application built with [React](https://reactjs.org/) The application allows for a user to manage project related data. The dashboard uses the **Black Dashboard Theme** designed by [Creative Tim](https://www.creative-tim.com/) and is equipped with filtering, sorting, and editing capabilities for management purposes. [See Demo]()
+Project Dasboard is a client-side application built with [React](https://reactjs.org/) The application allows for a user to manage project related data. The dashboard uses the **Black Dashboard Theme** designed by [Creative Tim](https://www.creative-tim.com/) and is equipped with filtering, sorting, and editing capabilities for management purposes. [See Demo](http://meddy672-project-dashboard.s3-website-us-east-1.amazonaws.com/admin/dashboard)
 
 ## Features
 - Search Filter
